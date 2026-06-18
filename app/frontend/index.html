@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Fingerspelling Video Translator</title>
+	<meta name="description" content="Translate finger spelled alphabet videos to text in real-time.">
+	<link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+    <!-- Layout: side navigation + translation area -->
+    <div class="layout">
+        <aside class="side-nav">
+            <div class="logo-container">
+                <div class="logo-box" id="logo">
+                    <i data-lucide="hand"></i>
+                </div>
+                <div class="logo-box">
+                    Fingerspelling<br><span>Translator</span>
+                </div>
+            </div>
+
+            <nav class="nav-tabs">
+                <button class="nav-tab active"><i class="fa fa-home"></i>&ensp;Translator</button>
+                <button class="nav-tab"><span>&#65;</span>&ensp;Alphabet Guide</button>
+                <button class="nav-tab"><i class="fa fa-clock-o"></i>&ensp;History</button>
+            </nav>
+
+            <div class="tip-container">
+                <div class="tip-title">
+                    <p><i class="fa fa-lightbulb-o"></i>&ensp;Tip</p>
+                </div>
+                <div class="tip-text">
+                    <p>Ensure good lighting and clear hand visibility for best results.</p>
+                </div>
+            </div>
+        </aside>
+
+        <div class="main-body">
+            <header class="header-container">
+	            <div class="header-section">
+                    <div class="header-text" id="ht-1">
+                        <h1>Fingerspelling Translator</h1>
+                    </div>
+                    <div class="header-text" id="ht-2">
+                        <p>Translate sign language fingerspelling to text in real-time.</p>
+                    </div>
+                </div>
+            </header>
+
+        
+            <section class="main-container" id="translation">
+                <div class="translation-inner">
+                    <div class="child-container" id="video-container">
+                        <div class="container-title">
+                            <i class="fa fa-camera"></i>&ensp;Live Camera   
+                        </div>
+                        <div class="camera-container">
+                            <video id="video" autoplay playsinline></video>
+                        </div>
+                        <div class="controls">
+                            <button class='btn' id="startBtn">Start Camera</button>
+                            <button class='btn' id="recordBtn" disabled>Start Recording</button>
+                        </div>
+                    </div>
+
+                    <div class="child-container" id="translation-container">
+                        <div class="container-title">
+                            <i class="fa fa-language"></i>&ensp;Translation
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </div>
+		
+		
+    <script src="js/main.js" defer></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+
+</body>
+</html>
+

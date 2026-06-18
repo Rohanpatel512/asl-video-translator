@@ -1,0 +1,257 @@
+* {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #F0F6FF;
+}
+
+.header-section {
+    padding: 50px;
+    line-height: 50px;
+}
+
+#ht-1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+}
+
+#ht-2 {
+    font-family: 'Roboto', sans-serif;
+    color: gray;
+}
+
+.main-container {
+    height: 100vh;
+    gap: 20px; 
+}
+
+.translation-inner {
+    display: flex;
+    border-radius: 10px;
+    gap: 20px;
+    padding: 30px;
+    box-sizing: border-box;
+    align-items: stretch;
+    height: calc(60% - 10px);
+}
+
+.child-container {
+    flex: 1;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.19);
+    height: 100%;
+}
+
+#video-container {
+    background-color: white;
+}
+
+#translation-container {
+    background-color: white;
+}
+
+/* Video container design */
+.camera-container {
+    height: 70%;
+}
+
+#video {
+    transform: scaleX(-1);
+}
+
+.controls {
+    display: flex;
+    gap: 12px;
+    margin-top: 5px;
+}
+
+.btn {
+    flex: 1;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.12);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    letter-spacing: 0.3px;
+}
+
+/* RECORD button (primary red) */
+#startBtn {
+    background: linear-gradient(135deg, #ff3b3b, #d60000);
+    color: white;
+    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.25);
+}
+
+#startBtn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(255, 0, 0, 0.35);
+}
+
+#startBtn:active {
+    transform: scale(0.98);
+}
+
+/* STOP button (muted until active) */
+#recordBtn {
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.6);
+    cursor: not-allowed;
+}
+
+/* active stop state */
+#recordBtn.active {
+    background: linear-gradient(135deg, #2d6cdf, #1a4fb3);
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(45, 108, 223, 0.25);
+}
+
+#recordBtn.active:hover {
+    transform: translateY(-1px);
+}
+
+/* Main body design */
+.main-body {
+    width: 100%;
+}
+
+.container-title {
+    padding: 20px;
+    font-family: 'Roboto', sans-serif;
+    background: transparent;
+    font-weight: bold;
+    border-bottom: 0.1px solid gray;
+}
+
+.container-title i {
+    font-size: 20px;
+}
+
+/* Navbar tab desgin */
+.layout {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+}
+
+.side-nav {
+    width: 250px;
+    background-color: #001f3f; 
+    color: #ffffff;
+    padding: 100px 16px;
+    box-sizing: border-box;
+    height: 100vh;
+}
+
+.nav-tabs {
+    display: flex;
+    background-color: #001f3f; 
+    flex-direction: column;
+    gap: 10px;
+}
+
+.nav-tab {
+    background: transparent;
+    color: #ffffff;
+    padding: 20px 20px;
+    border: none;
+    border-radius: 6px;
+    text-align: left;
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+    height: 100%;
+    top: 50%;
+    margin-top: 20%;
+}
+
+.nav-tab i, span {
+    background: transparent;
+    font-size: 20px;
+}
+
+span {
+    background: transparent;
+}
+
+.nav-tab:hover {
+    background: rgba(255,255,255,0.06);
+}
+
+.nav-tab.active {
+    background: rgba(255,255,255,0.08);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.nav-tab.active i {
+    color: #4287f5;
+}
+
+.logo-container {
+    top: 5%;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    background-color: transparent;
+    position: absolute;
+    padding: 20px;
+    display: flex; 
+    gap: 2px;
+    left: 0%;
+}
+
+.logo-box {
+    background: transparent;
+}
+
+.logo-box span {
+    /*color: #316af7;*/
+    /*color: #2560f5;*/
+    color: #497af5;
+}
+
+#logo svg {
+    width: 40px;
+    height: 40px;
+    background-color: #001f3f;
+}
+
+.tip-container {
+    background-color: #013366;
+    color: #ffffff;
+    border-radius: 6px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    margin-top: 45%;
+}
+
+/* Title row */
+.tip-title {
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.tip-title i {
+    background-color: transparent;
+}
+
+/* Text */
+.tip-text {
+    font-size: 13px;
+    line-height: 2;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.tip-container p {
+    background-color: #013366;
+}
+
+
+/* Make main content take remaining width */
+.main-container {
+    flex: 1;
+}
