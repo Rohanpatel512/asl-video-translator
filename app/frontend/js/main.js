@@ -12,16 +12,11 @@ startBtn.addEventListener("click", async () => {
         audio: false
     });
 
-   console.log("2", stream);
-
     video.srcObject = stream;
-
-    console.log("3", recordBtn);
 
     recordBtn.classList.add("active");
     recordBtn.disabled = false;
-    
-    console.log("4");
+
 });
 
 recordBtn.addEventListener("click", () => {
