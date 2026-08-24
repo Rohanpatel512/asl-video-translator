@@ -20,24 +20,53 @@ def create_dataloaders(train_path, val_path, test_path, batch_size=32):
         test_data (Image Folder) - Validation image dataset
     """
 
-    data_transform = transforms.Compose([
+    train_transform = transforms.Compose([
+        transforms.Resize(size=(224, 224)),
+
+        transforms.RandomApply([
+            transforms.RandomRotation(10)
+        ], p=0.5),
+
+        transforms.RandomApply([
+            transforms.RandomResizedCrop(
+                224,
+                scale=(0.85, 1.0)
+            )
+        ], p=0.5),
+
+        transforms.RandomApply([
+            transforms.ColorJitter(
+                brightness=0.2,
+                contrast=0.2,
+                saturation=0.2
+            )
+        ], p=0.5),
+
+        transforms.ToTensor(),
+        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+    ])
+
+    eval_transform = transforms.Compose([
         transforms.Resize(size=(224, 224)),
         transforms.ToTensor(),
         transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
     ])
 
-    train_data = datasets.ImageFolder(root=train_path, transform=data_transform)
-    val_data = datasets.ImageFolder(root=val_path, transform=data_transform) 
-    test_data = datasets.ImageFolder(root=test_path, transform=data_transform)
+    train_data = datasets.ImageFolder(root=train_path, transform=train_transform)
+    val_data = datasets.ImageFolder(root=val_path, transform=eval_transform) 
+    test_data = datasets.ImageFolder(root=test_path, transform=eval_transform)
 
     train_files = set(x[0] for x in train_data.samples)
     val_files = set(x[0] for x in val_data.samples)
-    overlap_files = train_files & val_files
+    test_files = set(x[0] for x in test_data.samples)
+    
+    train_val_overlap = train_files & val_files
+    train_test_overlap = train_files & test_files 
+    test_val_overlap = test_files & val_files 
 
-    print(f"Same file paths in both val and train: {len(overlap_files)}")
-    if overlap_files:
+    if train_val_overlap or train_test_overlap or test_val_overlap:
         raise ValueError(
-            f"Found {len(overlap_files)} overlapping image files between train and val. "
+            f"Found overlapping image files."
             "Check your dataset split and ensure the two folders are separate."
         )
 
