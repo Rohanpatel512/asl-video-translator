@@ -15,31 +15,6 @@
 
     <!-- Layout: side navigation + translation area -->
     <div class="layout">
-        <aside class="side-nav">
-            <div class="logo-container">
-                <div class="logo-box" id="logo">
-                    <i data-lucide="hand"></i>
-                </div>
-                <div class="logo-box">
-                    Fingerspelling<br><span>Translator</span>
-                </div>
-            </div>
-
-            <nav class="nav-tabs">
-                <button class="nav-tab active"><i class="fa fa-home"></i>&ensp;Translator</button>
-                <button class="nav-tab"><span>&#65;</span>&ensp;Alphabet Guide</button>
-                <button class="nav-tab"><i class="fa fa-clock-o"></i>&ensp;History</button>
-            </nav>
-
-            <div class="tip-container">
-                <div class="tip-title">
-                    <p><i class="fa fa-lightbulb-o"></i>&ensp;Tip</p>
-                </div>
-                <div class="tip-text">
-                    <p>Ensure good lighting and clear hand visibility for best results.</p>
-                </div>
-            </div>
-        </aside>
 
         <div class="main-body">
             <header class="header-container">
@@ -62,10 +37,7 @@
                         </div>
                         <div class="camera-container">
                             <video id="video" autoplay playsinline></video>
-                        </div>
-                        <div class="controls">
-                            <button class='btn' id="startBtn">Start Camera</button>
-                            <button class='btn' id="recordBtn" disabled>Start Recording</button>
+                            <canvas id="canvas" style="display: none;"></canvas>
                         </div>
                     </div>
 
@@ -73,6 +45,11 @@
                         <div class="container-title">
                             <i class="fa fa-language"></i>&ensp;Translation
                         </div>
+                        <div class="box" id="translation-text"></div>
+                        <div class="box" id="btn-container">
+                            <button id="clear-btn" class="btn">Clear</button>
+                        </div>
+                        <div class="box" id="non-text-signal"></div>
                     </div>
                 </div>
             </section>
@@ -81,7 +58,7 @@
     </div>
 		
 		
-    <script src="js/main.js" defer></script>
+    <script type="module" src="js/main.js"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
         lucide.createIcons();

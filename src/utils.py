@@ -15,7 +15,7 @@ def load_model():
     """
 
     NUM_CLASSES = 29
-    PATH = '/Users/rohan/Desktop/Python-Projects/asl-video-translator/data/weights/model_v1.pth'
+    PATH = '/Users/rohan/Desktop/Python-Projects/asl-video-translator/data/weights/model_v3.pth'
 
     model = torchvision.models.resnet18(weights=None)
 

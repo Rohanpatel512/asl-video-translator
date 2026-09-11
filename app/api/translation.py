@@ -1,24 +1,39 @@
 from fastapi import APIRouter, HTTPException, UploadFile, File
-from services.pipeline_services import process_video
+from app.services.translation_service import process_frame
+from io import BytesIO
+from PIL import Image 
 
 translate_router = APIRouter(prefix="/translate", tags=["translate"])
 
-@translate_router.post("/upload")
-async def upload_video(file: UploadFile):
-    """
-    POST request for uploading video file.
-    Args
-        - File to be uploaded.
-    Returns
-        - None 
-    """
-    # Check if file doesn't exist 
-    if not file:
-        raise HTTPException(status_code=400, detail="No file uploaded")
+@translate_router.post("/translation/predict")
+async def predict(frame: UploadFile):
 
-    if not file.content_type.startswith("video/"):
-        raise HTTPException(status_code=400, detail="File must be a video.")
-    
-    # Process the uploaded video file
-    await process_video(file)
-    
+    contents = await frame.read()
+
+    if not contents:
+        raise HTTPException(
+            status_code=400, 
+            detail="No frame uploaded."
+        )
+
+    if frame.content_type not in "image/jpeg":
+        raise HTTPException(
+            status_code=400,
+            detail="The uploaded frame is not a JPEG image."
+        )
+
+    try: 
+        image = Image.open(BytesIO(contents))
+        image.verify() # Verify that the image is valid 
+
+        # Reopen the image 
+        image = Image.open(BytesIO(contents)).convert("RGB")
+    except Exception:
+        raise HTTPException(
+            status_code=400,
+            detail="The uploaded frame is not a valid image."
+        )
+
+    data = process_frame(image)
+
+    return data
