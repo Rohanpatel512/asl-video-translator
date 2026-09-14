@@ -11,6 +11,12 @@ from huggingface_hub import hf_hub_download
 from ultralytics import YOLO
 import numpy as np
 import random
+from src.config import (
+    HAND_MODEL_REPO,
+    HAND_MODEL_FILENAME,
+    HAND_DETECTION_CONFIDENCE,
+    CORS_ORIGINS,
+)
 
 # Load the pre-trained model 
 model = load_model()
@@ -19,11 +25,9 @@ MAP = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7, 'I': 8, '
        'K': 10, 'L': 11, 'M': 12, 'N': 13, 'O': 14, 'P': 15, 'Q': 16, 'R': 17, 'S': 18, 'T': 19, 'U': 20, 
        'V': 21, 'W': 22, 'X': 23, 'Y': 24, 'Z': 25, 'del': 26, 'nothing': 27, 'space': 28}
 
-# Constants
-CONFIDENCE_THRESHOLD = 0.3
 
 # Get the pre-trained model path 
-model_pth = hf_hub_download(repo_id="Bingsu/adetailer", filename="hand_yolov8n.pt")
+model_pth = hf_hub_download(repo_id=str(HAND_MODEL_REPO), filename=str(HAND_MODEL_FILENAME))
 
 # Load in the pre-trained hand detector model 
 hand_detector = YOLO(model_pth)
@@ -96,7 +100,7 @@ def detect_hand(image):
         - Tuple containing the coordinates of the bounding box if hand is detected, otherwise None.
     """
 
-    results = hand_detector(image, conf=CONFIDENCE_THRESHOLD)
+    results = hand_detector(image, conf=HAND_DETECTION_CONFIDENCE)
 
     result = results[0]
 

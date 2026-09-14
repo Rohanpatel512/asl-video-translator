@@ -1,0 +1,193 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #0f1830;
+    color: #ffffff;
+    min-height: 100vh;
+}
+
+.guide-container {
+    width: min(1200px, 92%);
+    margin: 0 auto;
+    padding: 40px 0 60px;
+}
+
+/* Back button */
+
+.back-link {
+    display: inline-block;
+    color: #b8c7e6;
+    text-decoration: none;
+    font-size: 15px;
+    margin-bottom: 35px;
+}
+
+.back-link:hover {
+    color: #ffffff;
+}
+
+
+/* Header */
+
+.guide-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.guide-header h1 {
+    font-size: 38px;
+    margin-bottom: 14px;
+}
+
+.guide-header p {
+    max-width: 650px;
+    margin: 0 auto;
+    color: #b8c7e6;
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+
+/* Section headings */
+
+.alphabet-section h2,
+.special-section h2 {
+    font-size: 24px;
+    margin-bottom: 22px;
+}
+
+
+/* Alphabet grid */
+
+.alphabet-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 18px;
+}
+
+
+/* Letter cards */
+
+.letter-card {
+    background: #182442;
+    border: 1px solid #293858;
+    border-radius: 12px;
+    padding: 14px;
+    text-align: center;
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.letter-card:hover {
+    transform: translateY(-3px);
+    border-color: #50658e;
+}
+
+.letter-card img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.letter-card span {
+    display: block;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+
+/* Special gestures */
+
+.special-section {
+    margin-top: 55px;
+}
+
+.special-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 180px);
+    gap: 18px;
+}
+
+
+/* Translator button */
+
+.translator-button {
+    display: block;
+    width: fit-content;
+
+    margin: 55px auto 0;
+
+    padding: 12px 24px;
+
+    background: #ffffff;
+    color: #0f1830;
+
+    text-decoration: none;
+    border-radius: 8px;
+
+    font-weight: 600;
+
+    transition: opacity 0.2s ease;
+}
+
+.translator-button:hover {
+    opacity: 0.85;
+}
+
+
+/* Tablet */
+
+@media (max-width: 900px) {
+
+    .alphabet-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+
+/* Mobile */
+
+@media (max-width: 650px) {
+
+    .guide-container {
+        padding-top: 25px;
+    }
+
+    .guide-header h1 {
+        font-size: 30px;
+    }
+
+    .alphabet-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .special-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/* Small phones */
+
+@media (max-width: 400px) {
+
+    .letter-card {
+        padding: 10px;
+    }
+
+    .letter-card span {
+        font-size: 20px;
+    }
+}
+

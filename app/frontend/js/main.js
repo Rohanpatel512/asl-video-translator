@@ -16,7 +16,7 @@ let lastTimeCommit = null;
 
 const CANDIDATE_STABILITY_MS = 200;
 
-const API_BASED_URL = window.API_BASED_URL || "http://127.0.0.1:8000"
+const API_BASED_URL = window.APP_CONFIG?.API_BASE_URL ?? "";
 
 window.onload = () => {
     alert(

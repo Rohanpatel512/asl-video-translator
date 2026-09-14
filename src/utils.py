@@ -3,6 +3,16 @@ from torchvision import transforms
 import torch 
 import torchvision.models as models 
 import torch.nn as nn 
+from huggingface_hub import hf_hub_download
+from src.config import (
+    HF_TOKEN,
+    HAND_MODEL_REPO,
+    HAND_MODEL_FILENAME,
+    HAND_DETECTION_CONFIDENCE,
+    PRIVATE_MODEL_REPO,
+    CLASSIFIER_MODEL_FILENAME,
+    CORS_ORIGINS
+)
 
 def load_model():
     """
@@ -15,7 +25,6 @@ def load_model():
     """
 
     NUM_CLASSES = 29
-    PATH = '/Users/rohan/Desktop/Python-Projects/asl-video-translator/data/weights/model_v3.pth'
 
     model = torchvision.models.resnet18(weights=None)
 
@@ -27,6 +36,12 @@ def load_model():
         )
     )
 
-    model.load_state_dict(torch.load(PATH, map_location=torch.device('cpu')))
+    local_weight_path = hf_hub_download(
+        repo_id=PRIVATE_MODEL_REPO,
+        filename=CLASSIFIER_MODEL_FILENAME,
+        token=HF_TOKEN
+    )
+
+    model.load_state_dict(torch.load(local_weight_path, map_location=torch.device('cpu')))
 
     return model 

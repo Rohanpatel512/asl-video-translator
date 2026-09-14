@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ASL Fingerspelling Guide</title>
+
+    <link rel="stylesheet" href="css/guide.css">
+</head>
+
+<body>
+
+    <main class="guide-container">
+
+        <a href="index.html" class="back-link">← Back to Translator</a>
+
+        <header class="guide-header">
+            <h1>ASL Fingerspelling Guide</h1>
+
+            <p>
+                Practice the A–Z handshapes recognized by this translator
+                before using the live translation demo.
+            </p>
+        </header>
+
+        <section class="alphabet-section">
+            <h2>A–Z Alphabet</h2>
+
+            <div id="alphabet-grid" class="alphabet-grid"></div>
+        </section>
+
+        <section class="special-section">
+            <h2>Special Gestures</h2>
+
+            <div id="special-grid" class="special-grid"></div>
+        </section>
+
+        <a href="index.html" class="translator-button">
+            Try the Translator
+        </a>
+
+    </main>
+
+    <script>
+        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+        const API_BASED_URL = window.APP_CONFIG?.API_BASE_URL ?? "";
+        const alphabetGrid = document.getElementById("alphabet-grid");
+
+        letters.forEach(letter => {
+
+            const card = document.createElement("div");
+            card.className = "letter-card";
+
+            card.innerHTML = `
+                <img
+                    src="${API_BASED_URL}/assets/guide_images/${letter}_test.jpg"
+                    alt="ASL fingerspelling ${letter}"
+                >
+                <span>${letter}</span>
+            `;
+
+            alphabetGrid.appendChild(card);
+        });
+
+
+        const specialGestures = [
+            {
+                name: "Delete",
+                file: "del_test.jpg"
+            },
+            {
+                name: "Nothing",
+                file: "nothing_test.jpg"
+            },
+            {
+                name: "Space",
+                file: "space_test.jpg"
+            }
+        ];
+
+        const specialGrid = document.getElementById("special-grid");
+
+        specialGestures.forEach(gesture => {
+
+            const card = document.createElement("div");
+            card.className = "letter-card";
+
+            card.innerHTML = `
+                <img
+                    src="${API_BASED_URL}/assets/guide_images/${gesture.file}"
+                    alt="ASL ${gesture.name} gesture"
+                >
+                <span>${gesture.name}</span>
+            `;
+
+            specialGrid.appendChild(card);
+        });
+    </script>
+
+</body>
+</html>
+
