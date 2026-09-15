@@ -13,22 +13,20 @@ let committedPrediction = null;
 let candidatePrediction = null;
 let candidateStartTime = null;
 let lastTimeCommit = null;
+let isProcessingFrames = true;
 
 const CANDIDATE_STABILITY_MS = 200;
 
 const API_BASED_URL = window.APP_CONFIG?.API_BASE_URL ?? "";
 
-window.onload = () => {
-    alert(
-        "For best results position yourself toward the side of the camera frame\n" + 
-        "and keep your signing hand near the centre of the frame.\n" + 
-        "Keep your hand cleary visible and well-lit while signing.\n" + 
-        "If a letter repeats, briefly move your hand out of the frame and " + 
-        "bring it back before signing the same letter again.\n\n" + 
-        "For example, when spelling \"HELLO\", move your hand out of the frame " + 
-        "and back in between the two L signs."
-    );
-};
+window.addEventListener("beforeunload", () => {
+    console.log("Page unloading — stopping frame processing.");
+    isProcessingFrames = false;
+    if (video.srcObject) {
+        const tracks = video.srcObject.getTracks();
+        tracks.forEach(track => track.stop());
+    }
+});
 
 async function startCamera() {
 
@@ -70,7 +68,7 @@ function captureFrame() {
 
 async function initFrameProcessing() {
     
-    while(true) {
+    while(isProcessingFrames) {
         const frame = captureFrame();
 
         if(!frame || frame.width == 0 || frame.height == 0) {

@@ -191,3 +191,42 @@ body {
     }
 }
 
+.guide-instructions {
+    margin: 1.5rem auto 2.5rem;
+    max-width: 850px;
+    padding: 1.5rem 1.75rem;
+
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 4px solid #6c8cff;
+    border-radius: 12px;
+
+    text-align: left;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.guide-instructions h2 {
+    margin: 0 0 1rem;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.guide-instructions p {
+    margin: 0.75rem 0;
+    color: #b8c0d4;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.guide-instructions p:first-of-type {
+    margin-top: 0;
+}
+
+.guide-instructions p:last-of-type {
+    margin-bottom: 0;
+}
+
+.guide-instructions strong {
+    color: #ffffff;
+}
