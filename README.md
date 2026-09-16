@@ -154,7 +154,10 @@ asl-video-translator/
 │   └── main.py
 │
 ├── src/
-│   └── config.py
+│   ├── train.py
+│   ├── dataset.py
+│   ├── config.py
+│   └── utils.py
 │
 ├── data/
 │   └── asl_dataset/
