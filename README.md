@@ -1,3 +1,7 @@
+
+
+https://github.com/user-attachments/assets/ae0f443e-2fdb-42bf-ad6c-7ac71b44253e
+
 # ASL Fingerspelling Translator
 
 A real-time computer vision application that recognizes **American Sign Language (ASL) fingerspelling** from webcam input and converts recognized handshapes into text.
