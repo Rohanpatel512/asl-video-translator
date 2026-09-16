@@ -6,6 +6,8 @@ Built with **PyTorch, ResNet18, YOLOv8, FastAPI, and vanilla JavaScript**.
 
 ## Demo
 
+
+
 <!-- Upload the demo MP4 directly below this line using GitHub's README editor. -->
 
 ## Features
